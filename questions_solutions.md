@@ -181,5 +181,83 @@ OR:
 // Actually preferred, since we created only one environment
 ```
 
+## Question #8
+
+When initializing variables the following code block occurs:
+```javascript
+var someArr = [],
+    someOtherArr = [];
+
+someArr === someOtherArr; // evaluates to false even though the arrays are indeed equivalent
+```
+
+This situation occurs because every time we evaluate an express such as an Array we get a new array with a new identity. Because of this fact, what do you expect of the following?
+
+```javascript
+var x = [2012, 6, 14],
+    y = x;
+
+x === y; // evaluates to true
+```
+
+Why is this happening?
+
+When creating new environments, the JavaScript compiler binds values to names and so that when we use these names as expressions the name evaluates as a value.
+
+When we write `y = x` the name `x` is looked up in the current environment and its value is a specific array that was created when the expression [2012, 6, 14] was first evaluated. That same exact value is then binded to the name `y` in the new environment and thus x and y are both bound to the same exact value, which is identical to itself.
+
+```javascript
+var x = [2012, 6, 14];
+
+(function (y) {
+    return x === y;
+})(x)
+// evalutes to true
+```
+
+## Question #9
+> Return a function that's the composition of two functions, or rather `compose (f, g)(x) -> f(g(x))`
 
 
+```javascript
+var compose = function(f1, f2) {
+    return function (x) {
+        return f1(f2(x));
+    }
+}
+``` 
+
+## Question #10
+> Write two functions, **minimumSum** and **maximumSum**, that take in 2 parameters:
+
+1. **values** - an array of integers with an arbitrary length. This array can hold positive or negative numbers.
+2. **n** - how many integers should be summed. Will always be 0 or greater.
+
+Example:
+
+```javascript
+var values = [5, 4, 1, 3, 2];
+minimumSum(values, 2); //=> 1 + 2 = 3
+maximumSum(values, 3); //=> 3 + 4 + 5 = 12
+```
+
+```javascript
+function minimumSum(values, n) {
+    return add(values.sort(sort), n);
+}
+
+function maximumSum(values, n) {
+    return add(values.sort(sort).reverse(), n);
+}
+
+function add(values, n) {
+    return values.slice(0, n).reduce(function(prev, curr) {
+        return prev + curr;
+    }, 0);
+}
+
+function sort(a, b) {
+    return a - b;
+}
+
+```
