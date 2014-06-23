@@ -261,3 +261,32 @@ function sort(a, b) {
 }
 
 ```
+
+## Question #11
+> Write a function that sorts its parameters. *Hint: You may use the default `.sort()` Array method*
+
+```javascript
+function sort() {
+    return [].slice.call(arguments, 0).sort();
+}
+```
+
+## Question #12
+> What is the result of `original` and `updated` after the following code executes:
+
+```javascript
+var original = [1, 2, 3],
+    updated = original;
+
+original.push(4);
+updated.push(5);
+```
+
+Solution:
+
+The original and updated names both act as references to the same array which gets modified on each `.push()` call.
+
+```javascript
+original; //=> [1, 2, 3, 4, 5]
+updated; //=> [1, 2, 3, 4, 5]
+```
