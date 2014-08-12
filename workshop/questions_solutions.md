@@ -290,3 +290,56 @@ The original and updated names both act as references to the same array which ge
 original; //=> [1, 2, 3, 4, 5]
 updated; //=> [1, 2, 3, 4, 5]
 ```
+
+## Question #13
+> Consider the following:
+
+```javascript
+''    ? 'truthy' : 'falsy' //=> falsy
+0     ? 'truthy' : 'falsy' //=> falsy
+false ? 'truthy' : 'falsy' //=> falsy
+```
+
+What would the following result in?
+
+```javascript
+new String('')      ? 'truthy' : 'falsy' //=> truthy
+new Number(0)       ? 'truthy' : 'falsy' //=> truthy
+new Boolean(false)  ? 'truthy' : 'falsy' //=> truthy
+```
+
+## Question #14
+> Write an extension to `Array` that performs the following: `Array.range(0, 3); //=> [0, 1, 2]`. 
+
+This function takes in two values, `start` and `count`. It returns a `count` amount of numbers from start. Bonus points if you don't use a for loop, while loop, etc.
+
+
+Solution:
+```javascript
+Array.range = function(start, count) {
+    return Array.call(null, Array(count)).map(function(val, index) {
+        return start + index;
+    });
+};
+```
+
+## Question #15
+> Implement a function named `pluck` which takes an array of objects and a property name and returns an array containing the named property values of each object
+
+```javascript
+// Example
+pluck([{ a: 1 }, { a: 2 }], 'a') //=> [1, 2]
+```
+
+*Any missing properties can be left as null or undefined*
+
+Bonus points if you don't use a for loop, while loop, etc.
+
+Solution:
+```javascript
+function pluck(objs, name) {
+  return objs.map(function(obj) { 
+    return obj[name] 
+  });
+}
+```

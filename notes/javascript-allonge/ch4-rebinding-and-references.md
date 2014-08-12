@@ -63,3 +63,43 @@ I think it's also important to note that when you create aliases for a certain a
 
 ## When Rebinding Meets Recursion
 
+It's important to note that functions declared recursively are not pure functions. Recursive functions are (for the most part) defined as closures because when they call themselves they look themselves up by name in their enclosing environment. As a result, recursive functions depend upon a specific value (themselves) being bound in their enclosing environment. 
+
+```javascript
+var even = function(num) {
+    return (num === 0) || !(even(num - 1));
+}
+```
+
+Obviously, if we used function declarations then we can't reassign the `even` value described above.
+
+However, if you create a named function expression you can bind the name of the function within its body while leaving it out of the environment of the function expression.
+
+```javascript
+var even = function even(num) {
+    return (num === 0) || !(even(num - 1));
+}
+```
+
+In this case, the function doesn't refer to a name bound in its enclosing environment, it refers to a name bound in its own body. Now it is a pure function.
+
+> When you want to make a recursive function, the safest practice is to use a named function expression
+
+
+## limits
+
+While named function expressions prove useful, they do have their limitations. Namely, they are useful for simple recursion but cannot do mutual recursion.
+
+# From Let to Modules
+
+We can create a new environment any time we want by creating an IIFE. With this construct (an IIFE), you can build **modules**. 
+
+> Modules are any collection of functions that have some private and some public-facing elements
+
+
+# Summary
+
+**Rebinding**
+- JavaScript permits reassignment/rebinding of variables
+- Arrays and Objects are mutable
+- References permit aliasing of reference types
