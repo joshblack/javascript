@@ -2,7 +2,7 @@
 
 Hey everyone! I'm glad that you were all able to come out tonight to hear this talk. For those who don't know, the subject of this will be about Functional Array Methods in JavaScript. If you don't know what that means, *great*, you're in the right place! And if you think this is old news then I hope it's a worthwhile refresher. 
 
-Before we actually talk about the array methods that exist in JavaScript, though, I feel its necessary to recap and review what "Functional" and being "Functional" actually means.
+Before we actually talk about the array methods that exist in JavaScript, though, I feel it's necessary to recap and review what ***Functional*** and ***being Functional*** actually means.
 
 [From Wikipedia:](http://en.wikipedia.org/wiki/Functional_programming)
 > *Functional programming is a programming paradigm, a style of building the structure and elements of computer programs, that treats computation as the evaluation of mathematical functions and avoids state and mutable data.*
