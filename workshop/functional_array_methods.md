@@ -120,7 +120,7 @@ var arr = [1, 2, 3, 4, 5];
 // Let's double each number
 arr.map(function(value, index, array) {
     return value * 2;
-}); //=> [1, 4, 6, 8, 10]
+}); //=> [2, 4, 6, 8, 10]
 ```
 
 Although this example is trivial, we can think of map abstractly as a way to transform a set of data into what we want the data to be. This could be things like:
